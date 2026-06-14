@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Arjun M — Salesforce Developer Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:#F7F5FF;color:#1A1040;overflow-x:hidden}
+:root{
+  --bg:#F7F5FF;
+  --card:#FFFFFF;
+  --border:rgba(139,92,246,0.14);
+  --purple:#7C3AED;
+  --purple-light:#8B5CF6;
+  --purple-soft:#EDE9FE;
+  --purple-mid:#DDD6FE;
+  --gold:#D97706;
+  --gold-bg:#FEF3C7;
+  --muted:#6B7280;
+  --dark:#1A1040;
+  --heading:#111827;
+}
+.wrap{max-width:880px;margin:0 auto;padding:0 24px}
+nav{position:sticky;top:0;background:rgba(247,245,255,0.97);backdrop-filter:blur(8px);border-bottom:1px solid var(--border);z-index:100;padding:14px 0}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;max-width:880px;margin:0 auto;padding:0 24px}
+.nav-logo{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:18px;color:var(--purple);letter-spacing:-0.5px;text-decoration:none}
+.nav-links{display:flex;gap:24px}
+.nav-links a{color:var(--muted);font-size:13px;text-decoration:none;font-weight:500;transition:color 0.2s}
+.nav-links a:hover{color:var(--purple)}
+.hero{padding:72px 0 60px;text-align:center;position:relative}
+.hero::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:radial-gradient(ellipse at 50% 0%,rgba(139,92,246,0.08) 0%,transparent 70%);pointer-events:none}
+.avatar-ring{display:inline-block;position:relative;margin-bottom:24px}
+.avatar{width:90px;height:90px;border-radius:50%;background:linear-gradient(135deg,#7C3AED,#A78BFA);display:flex;align-items:center;justify-content:center;font-family:'Space Grotesk',sans-serif;font-size:28px;font-weight:700;color:#fff;position:relative;z-index:2;box-shadow:0 8px 24px rgba(124,58,237,0.25)}
+.ring-anim{position:absolute;inset:-8px;border-radius:50%;border:2px solid transparent;border-top-color:#7C3AED;border-right-color:#DDD6FE;animation:spin 4s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.cert-star{position:absolute;bottom:-2px;right:-2px;width:26px;height:26px;background:#F59E0B;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;z-index:3;border:2px solid #fff;color:#fff;font-weight:700}
+.hero-name{font-family:'Space Grotesk',sans-serif;font-size:42px;font-weight:700;letter-spacing:-1.5px;color:var(--heading);line-height:1}
+.hero-title{font-family:'Space Grotesk',sans-serif;font-size:17px;color:var(--purple-light);font-weight:500;margin:10px 0 14px}
+.hero-loc{font-size:13px;color:var(--muted);margin-bottom:28px;display:flex;align-items:center;justify-content:center;gap:4px}
+.hero-cta{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:36px}
+.btn-primary{background:var(--purple);color:#fff;padding:11px 24px;border-radius:8px;font-size:14px;font-weight:600;text-decoration:none;transition:background 0.2s;display:inline-flex;align-items:center;gap:7px;box-shadow:0 4px 14px rgba(124,58,237,0.3)}
+.btn-primary:hover{background:#6D28D9}
+.btn-outline{background:#fff;color:var(--purple);padding:10px 22px;border-radius:8px;font-size:14px;font-weight:500;text-decoration:none;border:1.5px solid var(--purple-mid);transition:all 0.2s;display:inline-flex;align-items:center;gap:7px}
+.btn-outline:hover{border-color:var(--purple);background:var(--purple-soft)}
+.stats-row{display:flex;border:1px solid var(--border);border-radius:14px;overflow:hidden;background:#fff;max-width:500px;margin:0 auto;box-shadow:0 2px 12px rgba(139,92,246,0.08)}
+.stat{flex:1;padding:16px 10px;text-align:center;border-right:1px solid var(--border)}
+.stat:last-child{border-right:none}
+.stat-num{font-family:'Space Grotesk',sans-serif;font-size:22px;font-weight:700;color:var(--purple);line-height:1}
+.stat-lbl{font-size:11px;color:var(--muted);margin-top:4px;font-weight:500}
+section{padding:52px 0}
+.section-tag{font-size:10px;font-weight:700;color:var(--purple-light);letter-spacing:2.5px;text-transform:uppercase;margin-bottom:6px}
+.section-title{font-family:'Space Grotesk',sans-serif;font-size:26px;font-weight:700;color:var(--heading);letter-spacing:-0.5px;margin-bottom:28px}
+.divider{height:1px;background:var(--border);margin-bottom:52px}
+.exp-card{background:#fff;border:1px solid var(--border);border-radius:14px;padding:26px 30px;position:relative;overflow:hidden;box-shadow:0 2px 12px rgba(139,92,246,0.06)}
+.exp-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;background:linear-gradient(180deg,#7C3AED,#A78BFA)}
+.exp-role{font-family:'Space Grotesk',sans-serif;font-size:19px;font-weight:700;color:var(--heading)}
+.exp-company{font-size:14px;color:var(--purple);font-weight:600;margin:4px 0 2px}
+.exp-period{font-size:12px;color:var(--muted);margin-bottom:18px;font-weight:500}
+.exp-list{list-style:none;display:flex;flex-direction:column;gap:10px}
+.exp-list li{font-size:13.5px;color:#374151;line-height:1.65;padding-left:18px;position:relative}
+.exp-list li::before{content:'→';position:absolute;left:0;color:var(--purple);font-size:12px;top:2px;font-weight:600}
+.exp-list strong{color:var(--heading);font-weight:600}
+.projects-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.proj-card{background:#fff;border:1px solid var(--border);border-radius:14px;padding:22px;transition:all 0.2s;display:flex;flex-direction:column;box-shadow:0 2px 8px rgba(139,92,246,0.05)}
+.proj-card:hover{border-color:var(--purple-light);box-shadow:0 4px 20px rgba(124,58,237,0.12)}
+.proj-card.featured{grid-column:1/-1;border-color:#DDD6FE}
+.proj-icon{width:38px;height:38px;border-radius:10px;background:var(--purple-soft);display:flex;align-items:center;justify-content:center;margin-bottom:14px}
+.proj-name{font-family:'Space Grotesk',sans-serif;font-size:15px;font-weight:700;color:var(--heading);margin-bottom:4px}
+.proj-sub{font-size:11px;color:var(--purple-light);font-weight:600;margin-bottom:8px}
+.proj-desc{font-size:12.5px;color:#6B7280;line-height:1.7;margin-bottom:14px;flex:1}
+.proj-tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px}
+.tag{font-size:10px;color:var(--purple);background:var(--purple-soft);padding:3px 10px;border-radius:20px;font-weight:500}
+.proj-impact{background:var(--gold-bg);border:1px solid rgba(217,119,6,0.2);border-radius:10px;padding:12px 14px}
+.proj-impact-label{font-size:9px;color:var(--gold);letter-spacing:1.5px;text-transform:uppercase;font-weight:700;margin-bottom:8px}
+.proj-impact-metrics{display:flex;gap:20px;flex-wrap:wrap}
+.metric-num{font-family:'Space Grotesk',sans-serif;font-size:22px;font-weight:700;color:var(--gold)}
+.metric-desc{font-size:10px;color:#92400E;margin-top:2px;font-weight:500}
+.skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px}
+.skill-group{background:#fff;border:1px solid var(--border);border-radius:14px;padding:18px 20px;box-shadow:0 2px 8px rgba(139,92,246,0.04)}
+.skill-group-name{font-family:'Space Grotesk',sans-serif;font-size:12px;font-weight:700;color:var(--purple);margin-bottom:12px;display:flex;align-items:center;gap:7px;text-transform:uppercase;letter-spacing:0.5px}
+.skill-pills{display:flex;flex-wrap:wrap;gap:6px}
+.skill-pill{font-size:11px;color:#374151;background:#F3F4F6;padding:4px 10px;border-radius:20px;border:1px solid #E5E7EB;font-weight:500}
+.certs-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+.cert-card{background:#fff;border:1px solid #DDD6FE;border-radius:14px;padding:28px 20px;display:flex;flex-direction:column;align-items:center;text-align:center;box-shadow:0 2px 12px rgba(139,92,246,0.08);transition:all 0.2s}
+.cert-card:hover{box-shadow:0 6px 24px rgba(124,58,237,0.15)}
+.cert-badge-wrap{margin-bottom:16px}
+.cert-name{font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:700;color:var(--heading);line-height:1.45;margin-bottom:5px}
+.cert-issuer{font-size:11px;color:var(--gold);font-weight:600}
+.integrations-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px}
+.int-card{background:#fff;border:1px solid var(--border);border-radius:12px;padding:18px;text-align:center;transition:all 0.2s;box-shadow:0 2px 8px rgba(139,92,246,0.04)}
+.int-card:hover{border-color:var(--purple-light);box-shadow:0 4px 16px rgba(124,58,237,0.1)}
+.int-name{font-size:12px;color:var(--heading);font-weight:600;margin-top:8px}
+.int-badge{font-size:10px;color:var(--muted);margin-top:3px}
+.edu-items{display:flex;flex-direction:column;gap:12px}
+.edu-card{background:#fff;border:1px solid var(--border);border-radius:14px;padding:20px 24px;display:flex;align-items:flex-start;gap:18px;box-shadow:0 2px 8px rgba(139,92,246,0.04)}
+.edu-icon{width:44px;height:44px;border-radius:12px;background:var(--purple-soft);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
+.edu-degree{font-family:'Space Grotesk',sans-serif;font-size:15px;font-weight:700;color:var(--heading)}
+.edu-school{font-size:13px;color:var(--purple);font-weight:500;margin:4px 0 2px}
+.edu-detail{font-size:12px;color:var(--muted)}
+.edu-gpa{display:inline-block;margin-top:8px;background:var(--purple-soft);color:var(--purple);font-size:11px;font-weight:600;padding:3px 12px;border-radius:20px}
+.contact-bar{background:linear-gradient(135deg,#7C3AED 0%,#A78BFA 100%);border-radius:16px;padding:36px;text-align:center;margin-bottom:48px;box-shadow:0 8px 32px rgba(124,58,237,0.25)}
+.contact-title{font-family:'Space Grotesk',sans-serif;font-size:24px;font-weight:700;color:#fff;margin-bottom:6px}
+.contact-sub{font-size:14px;color:rgba(255,255,255,0.85);margin-bottom:26px}
+.contact-links{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.contact-link{display:flex;align-items:center;gap:8px;padding:10px 18px;background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.3);border-radius:8px;color:#fff;text-decoration:none;font-size:13px;font-weight:500;transition:background 0.2s}
+.contact-link:hover{background:rgba(255,255,255,0.25)}
+.contact-link i{font-size:16px}
+footer{border-top:1px solid var(--border);padding:22px 0;text-align:center;font-size:12px;color:var(--muted)}
+@media(max-width:640px){
+  .projects-grid{grid-template-columns:1fr}
+  .proj-card.featured{grid-column:1}
+  .hero-name{font-size:30px}
+  .stats-row{flex-wrap:wrap}
+  .nav-links{gap:12px}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a class="nav-logo" href="#top">Arjun M</a>
+    <div class="nav-links">
+      <a href="#experience">Experience</a>
+      <a href="#projects">Projects</a>
+      <a href="#skills">Skills</a>
+      <a href="#certifications">Certs</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<div class="hero" id="top">
+  <div class="wrap">
+    <div class="avatar-ring">
+      <div class="avatar">AM</div>
+      <div class="ring-anim"></div>
+      <div class="cert-star">★</div>
+    </div>
+    <h1 class="hero-name">Arjun M</h1>
+    <div class="hero-title">Salesforce Developer &middot; Agentforce Specialist</div>
+    <div class="hero-loc"><i class="ti ti-map-pin"></i> Chennai, Tamil Nadu, India</div>
+    <div class="hero-cta">
+      <a href="mailto:arjunrao1608@gmail.com" class="btn-primary"><i class="ti ti-mail"></i>Get in Touch</a>
+      <a href="https://www.linkedin.com/in/arjun-rao-274ab5347" target="_blank" class="btn-outline"><i class="ti ti-brand-linkedin"></i>LinkedIn</a>
+      <a href="https://www.salesforce.com/trailblazer/xh06bzgwplysfkqwuf" target="_blank" class="btn-outline"><i class="ti ti-cloud"></i>Trailhead</a>
+    </div>
+    <div class="stats-row">
+      <div class="stat"><div class="stat-num">85%+</div><div class="stat-lbl">Code Coverage</div></div>
+      <div class="stat"><div class="stat-num">5</div><div class="stat-lbl">Projects</div></div>
+      <div class="stat"><div class="stat-num">3</div><div class="stat-lbl">Certifications</div></div>
+      <div class="stat"><div class="stat-num">5+</div><div class="stat-lbl">AI Integrations</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="divider wrap"></div>
+
+<section id="experience">
+  <div class="wrap">
+    <div class="section-tag">Career</div>
+    <div class="section-title">Work Experience</div>
+    <div class="exp-card">
+      <div class="exp-role">Salesforce Developer</div>
+      <div class="exp-company">DigiKAS</div>
+      <div class="exp-period">August 2025 – Present &middot; Chennai, Tamil Nadu</div>
+      <ul class="exp-list">
+        <li>Built <strong>Apex classes, triggers &amp; test classes</strong> with 85%+ code coverage enforcing business logic across multiple Salesforce objects.</li>
+        <li>Implemented <strong>record-triggered Flows &amp; approval processes</strong>, cutting manual processing time by ~35% for core workflows.</li>
+        <li>Applied the full <strong>async Apex stack</strong> — Future, Batch, Queueable, Schedulable — to keep long-running operations within governor limits.</li>
+        <li>Configured the <strong>Salesforce Security Model</strong>: Profiles, Roles, Permission Sets, and Sharing Rules for data access control.</li>
+        <li>Performed <strong>data migrations</strong> using Data Loader &amp; Data Import Wizard ensuring integrity across environments.</li>
+        <li>Managed <strong>source-driven deployments</strong> via Salesforce CLI, VS Code &amp; Change Sets following CI/CD best practices.</li>
+        <li>Collaborated in an <strong>Agile Scrum team</strong> — sprint planning, daily stand-ups, and retrospectives to consistently hit sprint goals.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<div class="divider wrap"></div>
+
+<section id="projects">
+  <div class="wrap">
+    <div class="section-tag">Portfolio</div>
+    <div class="section-title">Projects</div>
+    <div class="projects-grid">
+
+      <div class="proj-card featured">
+        <div class="proj-icon"><i class="ti ti-users" style="color:#7C3AED;font-size:20px"></i></div>
+        <div class="proj-name">HRMS Application — Salesforce Platform</div>
+        <div class="proj-desc">End-to-end employee leave management system with Experience Cloud portal and role-based access for employees, managers, and HR admins. Gemini API AI chatbot for employee self-service and natural-language leave queries.</div>
+        <div class="proj-tags">
+          <span class="tag">Apex Triggers</span><span class="tag">LWC</span><span class="tag">Experience Cloud</span><span class="tag">Flows</span><span class="tag">Gemini API</span><span class="tag">Approval Workflows</span><span class="tag">Security Model</span>
+        </div>
+        <div class="proj-impact">
+          <div class="proj-impact-label">Impact</div>
+          <div class="proj-impact-metrics">
+            <div><div class="metric-num">40%</div><div class="metric-desc">Less manual HR effort</div></div>
+            <div><div class="metric-num">30%</div><div class="metric-desc">Faster leave approvals</div></div>
+            <div><div class="metric-num">25%</div><div class="metric-desc">Drop in HR queries</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="proj-card">
+        <div class="proj-icon"><i class="ti ti-heart-handshake" style="color:#D97706;font-size:20px"></i></div>
+        <div class="proj-name">Donation &amp; Donor Management</div>
+        <div class="proj-sub">Vidhaigal NGO &middot; Tamilnadu Telugu People Association</div>
+        <div class="proj-desc">Master-Detail Donor/Donation model with roll-up summaries, Razorpay payment gateway integration, real-time LWC donation display, and an Experience Cloud portal for external donors to give online.</div>
+        <div class="proj-tags">
+          <span class="tag">Experience Cloud</span><span class="tag">LWC</span><span class="tag">Razorpay</span><span class="tag">REST API</span><span class="tag">Master-Detail</span>
+        </div>
+        <div class="proj-impact">
+          <div class="proj-impact-label">Impact</div>
+          <div class="proj-impact-metrics">
+            <div><div class="metric-num">✓</div><div class="metric-desc">Seamless online donations</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="proj-card">
+        <div class="proj-icon"><i class="ti ti-building" style="color:#7C3AED;font-size:20px"></i></div>
+        <div class="proj-name">Havenstone Realty — Real Estate Management</div>
+        <div class="proj-sub">Salesforce POC</div>
+        <div class="proj-desc">Custom real estate management system for property listings, client tracking, and deal pipeline management. Automated workflows for lead-to-close processes with full reporting dashboards.</div>
+        <div class="proj-tags">
+          <span class="tag">Custom Objects</span><span class="tag">Flows</span><span class="tag">LWC</span><span class="tag">Reports &amp; Dashboards</span><span class="tag">Apex</span>
+        </div>
+        <div class="proj-impact">
+          <div class="proj-impact-label">Impact</div>
+          <div class="proj-impact-metrics">
+            <div><div class="metric-num">✓</div><div class="metric-desc">Automated deal pipeline</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="proj-card">
+        <div class="proj-icon"><i class="ti ti-clipboard-list" style="color:#7C3AED;font-size:20px"></i></div>
+        <div class="proj-name">Vendor &amp; Purchase Order Management</div>
+        <div class="proj-sub">Salesforce POC</div>
+        <div class="proj-desc">Custom Vendor/PO data model with Apex triggers for auto-rating vendors, validation rules, real-time LWC for PO creation, and automated email notifications on approval. Full CI/CD via Salesforce CLI.</div>
+        <div class="proj-tags">
+          <span class="tag">Apex</span><span class="tag">LWC</span><span class="tag">Visualforce</span><span class="tag">Record Flow</span><span class="tag">Salesforce CLI</span>
+        </div>
+        <div class="proj-impact">
+          <div class="proj-impact-label">Impact</div>
+          <div class="proj-impact-metrics">
+            <div><div class="metric-num">50%</div><div class="metric-desc">Less manual follow-up</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="proj-card featured">
+        <div class="proj-icon"><i class="ti ti-users-group" style="color:#7C3AED;font-size:20px"></i></div>
+        <div class="proj-name">Tamilnadu Telugu People Association — Community Portal</div>
+        <div class="proj-sub">Salesforce Experience Cloud POC</div>
+        <div class="proj-desc">Community portal built on Salesforce Experience Cloud. Member registration, event management, and community engagement features with secure role-based access for members and administrators.</div>
+        <div class="proj-tags">
+          <span class="tag">Experience Cloud</span><span class="tag">LWC</span><span class="tag">Community Portal</span><span class="tag">Profiles &amp; Roles</span><span class="tag">Custom Objects</span>
+        </div>
+        <div class="proj-impact">
+          <div class="proj-impact-label">Impact</div>
+          <div class="proj-impact-metrics">
+            <div><div class="metric-num">✓</div><div class="metric-desc">Unified community platform</div></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="divider wrap"></div>
+
+<section id="skills">
+  <div class="wrap">
+    <div class="section-tag">Technical</div>
+    <div class="section-title">Skills</div>
+    <div class="skills-grid">
+      <div class="skill-group">
+        <div class="skill-group-name"><i class="ti ti-code"></i>Apex Development</div>
+        <div class="skill-pills"><span class="skill-pill">Classes</span><span class="skill-pill">Triggers</span><span class="skill-pill">Test Classes</span><span class="skill-pill">Future</span><span class="skill-pill">Batch</span><span class="skill-pill">Queueable</span><span class="skill-pill">Schedulable</span></div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-name"><i class="ti ti-layout"></i>Front-End</div>
+        <div class="skill-pills"><span class="skill-pill">LWC</span><span class="skill-pill">Visualforce</span><span class="skill-pill">Lightning App Builder</span></div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-name"><i class="ti ti-git-branch"></i>Automation &amp; Integration</div>
+        <div class="skill-pills"><span class="skill-pill">Flows</span><span class="skill-pill">Platform Events</span><span class="skill-pill">REST API</span><span class="skill-pill">SOAP API</span></div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-name"><i class="ti ti-shield"></i>Platform &amp; Security</div>
+        <div class="skill-pills"><span class="skill-pill">Experience Cloud</span><span class="skill-pill">Profiles</span><span class="skill-pill">Roles</span><span class="skill-pill">Permission Sets</span><span class="skill-pill">Sharing Rules</span><span class="skill-pill">Validation Rules</span></div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-name"><i class="ti ti-database"></i>Data &amp; Deployment</div>
+        <div class="skill-pills"><span class="skill-pill">SOQL</span><span class="skill-pill">SOSL</span><span class="skill-pill">Data Loader</span><span class="skill-pill">Salesforce CLI</span><span class="skill-pill">Change Sets</span><span class="skill-pill">Git</span><span class="skill-pill">Gearset</span></div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-name"><i class="ti ti-settings"></i>Practices</div>
+        <div class="skill-pills"><span class="skill-pill">Governor Limits</span><span class="skill-pill">Debug Logs</span><span class="skill-pill">Unit Testing</span><span class="skill-pill">Agile/Scrum</span><span class="skill-pill">CI/CD</span><span class="skill-pill">Copado DevOps</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider wrap"></div>
+
+<section id="certifications">
+  <div class="wrap">
+    <div class="section-tag">Credentials</div>
+    <div class="section-title">Certifications</div>
+    <div class="certs-grid">
+      <div class="cert-card">
+        <div class="cert-badge-wrap">
+          <svg width="90" height="90" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+            <polygon points="40,4 72,20 72,60 40,76 8,60 8,20" fill="#EDE9FE" stroke="#7C3AED" stroke-width="2"/>
+            <polygon points="40,11 65,23 65,57 40,69 15,57 15,23" fill="#DDD6FE"/>
+            <ellipse cx="32" cy="37" rx="9" ry="7" fill="#00A1E0"/>
+            <ellipse cx="42" cy="34" rx="10" ry="8" fill="#00A1E0"/>
+            <ellipse cx="50" cy="37" rx="7" ry="6" fill="#00A1E0"/>
+            <rect x="26" y="37" width="28" height="8" rx="4" fill="#00A1E0"/>
+            <text x="40" y="61" text-anchor="middle" font-family="Space Grotesk,sans-serif" font-size="6" font-weight="700" fill="#4C1D95">AGENTFORCE</text>
+            <text x="40" y="69" text-anchor="middle" font-family="Space Grotesk,sans-serif" font-size="5" font-weight="600" fill="#6D28D9">SPECIALIST</text>
+          </svg>
+        </div>
+        <div class="cert-name">Salesforce Certified Agentforce Specialist</div>
+        <div class="cert-issuer">Salesforce &middot; Active</div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-badge-wrap">
+          <svg width="90" height="90" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="40" cy="40" r="36" fill="#EDE9FE" stroke="#7C3AED" stroke-width="2"/>
+            <circle cx="40" cy="40" r="29" fill="#DDD6FE"/>
+            <path d="M50,27 A16,16 0 1,0 50,53 L50,47 A10,10 0 1,1 50,33 Z" fill="#4A9EFF"/>
+            <circle cx="54" cy="24" r="5" fill="#F59E0B"/>
+            <line x1="54" y1="17" x2="54" y2="20" stroke="#F59E0B" stroke-width="2" stroke-linecap="round"/>
+            <line x1="54" y1="28" x2="54" y2="31" stroke="#F59E0B" stroke-width="2" stroke-linecap="round"/>
+            <line x1="47" y1="24" x2="50" y2="24" stroke="#F59E0B" stroke-width="2" stroke-linecap="round"/>
+            <line x1="58" y1="24" x2="61" y2="24" stroke="#F59E0B" stroke-width="2" stroke-linecap="round"/>
+            <text x="40" y="67" text-anchor="middle" font-family="Space Grotesk,sans-serif" font-size="7" font-weight="700" fill="#4C1D95">COPADO AI</text>
+          </svg>
+        </div>
+        <div class="cert-name">Copado AI Certification</div>
+        <div class="cert-issuer">Copado &middot; Active</div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-badge-wrap">
+          <svg width="90" height="90" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="40" cy="40" r="36" fill="#EDE9FE" stroke="#7C3AED" stroke-width="2"/>
+            <circle cx="40" cy="40" r="29" fill="#DDD6FE"/>
+            <rect x="27" y="27" width="26" height="20" rx="4" fill="none" stroke="#4A9EFF" stroke-width="2.5"/>
+            <circle cx="34" cy="35" r="3.5" fill="#4A9EFF"/>
+            <circle cx="46" cy="35" r="3.5" fill="#4A9EFF"/>
+            <rect x="34" y="41" width="12" height="2.5" rx="1.2" fill="#4A9EFF"/>
+            <line x1="40" y1="27" x2="40" y2="22" stroke="#4A9EFF" stroke-width="2.5" stroke-linecap="round"/>
+            <circle cx="40" cy="21" r="3" fill="#F59E0B"/>
+            <line x1="27" y1="36" x2="22" y2="36" stroke="#4A9EFF" stroke-width="2.5" stroke-linecap="round"/>
+            <line x1="53" y1="36" x2="58" y2="36" stroke="#4A9EFF" stroke-width="2.5" stroke-linecap="round"/>
+            <rect x="33" y="47" width="14" height="4" rx="2" fill="#4A9EFF" opacity="0.6"/>
+            <text x="40" y="66" text-anchor="middle" font-family="Space Grotesk,sans-serif" font-size="5.5" font-weight="700" fill="#4C1D95">ROBOTIC TESTING</text>
+          </svg>
+        </div>
+        <div class="cert-name">Copado Robotic Testing Certification</div>
+        <div class="cert-issuer">Copado &middot; Active</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider wrap"></div>
+
+<section>
+  <div class="wrap">
+    <div class="section-tag">Integrations</div>
+    <div class="section-title">AI &amp; Platform Integrations</div>
+    <div class="integrations-grid">
+      <div class="int-card"><i class="ti ti-robot" style="font-size:28px;color:#7C3AED"></i><div class="int-name">Claude AI + Salesforce</div><div class="int-badge">Intelligent Automation</div></div>
+      <div class="int-card"><i class="ti ti-brand-openai" style="font-size:28px;color:#7C3AED"></i><div class="int-name">ChatGPT + Salesforce</div><div class="int-badge">Conversational Data</div></div>
+      <div class="int-card"><i class="ti ti-sparkles" style="font-size:28px;color:#D97706"></i><div class="int-name">Gemini API</div><div class="int-badge">AI Chatbot &middot; HRMS</div></div>
+      <div class="int-card"><i class="ti ti-message-circle" style="font-size:28px;color:#059669"></i><div class="int-name">WhatsApp + Twilio</div><div class="int-badge">Automated Messaging</div></div>
+      <div class="int-card"><i class="ti ti-cpu" style="font-size:28px;color:#7C3AED"></i><div class="int-name">Salesforce Agentforce</div><div class="int-badge">AI Agents</div></div>
+      <div class="int-card"><i class="ti ti-credit-card" style="font-size:28px;color:#D97706"></i><div class="int-name">Razorpay Gateway</div><div class="int-badge">Payment Integration</div></div>
+    </div>
+  </div>
+</section>
+
+<div class="divider wrap"></div>
+
+<section>
+  <div class="wrap">
+    <div class="section-tag">Education</div>
+    <div class="section-title">Academic Background</div>
+    <div class="edu-items">
+      <div class="edu-card">
+        <div class="edu-icon"><i class="ti ti-school" style="color:#7C3AED"></i></div>
+        <div>
+          <div class="edu-degree">Bachelor of Engineering (Computer Science)</div>
+          <div class="edu-school">Vidyaa Vikas College of Engineering and Technology</div>
+          <div class="edu-detail">Graduated July 2024</div>
+          <span class="edu-gpa">CGPA: 8.4 / 10.0</span>
+        </div>
+      </div>
+      <div class="edu-card">
+        <div class="edu-icon"><i class="ti ti-certificate" style="color:#8B5CF6"></i></div>
+        <div>
+          <div class="edu-degree">12th Grade</div>
+          <div class="edu-school">Sai Matriculation Higher Secondary School</div>
+          <div class="edu-detail">2020</div>
+          <span class="edu-gpa">83.13%</span>
+        </div>
+      </div>
+      <div class="edu-card">
+        <div class="edu-icon"><i class="ti ti-certificate" style="color:#8B5CF6"></i></div>
+        <div>
+          <div class="edu-degree">10th Grade</div>
+          <div class="edu-school">Mary Matha Matriculation Higher Secondary School</div>
+          <div class="edu-detail">2018</div>
+          <span class="edu-gpa">96.2%</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider wrap"></div>
+
+<section id="contact">
+  <div class="wrap">
+    <div class="contact-bar">
+      <div class="contact-title">Let's connect</div>
+      <div class="contact-sub">Open to Salesforce Developer opportunities — fresher roles, internships, and contract work.</div>
+      <div class="contact-links">
+        <a href="mailto:arjunrao1608@gmail.com" class="contact-link"><i class="ti ti-mail"></i>arjunrao1608@gmail.com</a>
+        <a href="tel:+917448944025" class="contact-link"><i class="ti ti-phone"></i>+91 74489 44025</a>
+        <a href="https://www.linkedin.com/in/arjun-rao-274ab5347" target="_blank" class="contact-link"><i class="ti ti-brand-linkedin"></i>LinkedIn</a>
+        <a href="https://www.salesforce.com/trailblazer/xh06bzgwplysfkqwuf" target="_blank" class="contact-link"><i class="ti ti-cloud"></i>Trailhead</a>
+      </div>
+    </div>
+    <footer>Built with pride &middot; Arjun M &middot; Salesforce Developer &middot; Chennai 2025</footer>
+  </div>
+</section>
+
+</body>
+</html>
